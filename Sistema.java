@@ -21,7 +21,17 @@ public class Sistema {
     public void agregarJugador(Jugador unJugador){
         listaJugadores.add(unJugador);
     }
-    public void ordenarLista(){
-        
+    public void ordenarListaAfabeticamente(){
+        Collections.sort(listaJugadores);
     }
+    private class OrdenarPorVictorias implements Comparator<Jugador>{
+        @Override
+        public int compare(Jugador j1, Jugador j2){
+            return j1.getVictorias()-j2.getVictorias();
+        }
+    }
+    public void ordenarListaPorVictorias(){
+        Collections.sort(listaJugadores, new OrdenarPorVictorias());
+    }
+    
 }
